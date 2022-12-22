@@ -115,6 +115,83 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupHierarchy()
+        setupLayout()
+    }
+    
+    //MARK: - Setup
+    
+    private func setupHierarchy() {
+        view.addSubview(buttonLogin)
+        view.addSubview(labelForgotPassword)
+        view.addSubview(labelLogin)
+        view.addSubview(textFieldLogin)
+        view.addSubview(textFieldPassword)
+        view.addSubview(labelHaveAccount)
+        view.addSubview(labelSign)
+        view.addSubview(buttonFacebook)
+        view.addSubview(buttonTwitter)
+    }
+    
+    private func setupLayout() {
+        labelLogin.snp.makeConstraints { make in
+            make.top.equalTo(view).offset(100)
+            make.centerX.equalTo(view)
+        }
+        
+        textFieldLogin.snp.makeConstraints { make in
+            make.left.equalTo(view).offset(60)
+            make.right.equalTo(view).offset(-60)
+            make.height.equalTo(50)
+            make.top.equalTo(labelLogin.snp.bottom).offset(60)
+        }
+        
+        textFieldPassword.snp.makeConstraints { make in
+            make.left.equalTo(view).offset(60)
+            make.right.equalTo(view).offset(-60)
+            make.height.equalTo(50)
+            make.top.equalTo(textFieldLogin.snp.bottom).offset(20)
+        }
+        
+        buttonLogin.snp.makeConstraints { make in
+            make.top.equalTo(textFieldPassword.snp.bottom).offset(60)
+            make.left.equalTo(view).offset(60)
+            make.right.equalTo(view).offset(-60)
+            make.height.equalTo(50)
+        }
+        
+        labelForgotPassword.snp.makeConstraints { make in
+            make.top.equalTo(buttonLogin.snp.bottom).offset(30)
+            make.left.equalTo(view).offset(60)
+            make.right.equalTo(view).offset(-60)
+            make.height.equalTo(50)
+        }
+        
+        labelHaveAccount.snp.makeConstraints { make in
+            make.bottom.equalTo(view).offset(-50)
+            make.left.equalTo(view).offset(60)
+            make.right.equalTo(labelSign.snp.left).offset(-10)
+        }
+        
+        labelSign.snp.makeConstraints { make in
+            make.bottom.equalTo(view).offset(-50)
+            make.right.equalTo(view).offset(-20)
+            make.left.equalTo(labelHaveAccount.snp.right).offset(10)
+        }
+        
+        buttonFacebook.snp.makeConstraints { make in
+            make.bottom.equalTo(labelHaveAccount.snp.top).offset(-40)
+            make.left.equalTo(view).offset(30)
+            make.height.equalTo(40)
+            make.right.equalTo(buttonTwitter.snp.left).offset(-10)
+        }
+        
+        buttonTwitter.snp.makeConstraints { make in
+            make.bottom.equalTo(labelSign.snp.top).offset(-40)
+            make.right.equalTo(view).offset(-30)
+            make.height.equalTo(40)
+            make.left.equalTo(buttonFacebook.snp.right).offset(10)
+        }
     }
 }
 
