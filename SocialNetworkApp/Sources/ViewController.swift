@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         labelLogin.text = "Login"
         labelLogin.textAlignment = .center
         labelLogin.font = UIFont.boldSystemFont(ofSize: 25)
-        labelLogin.textColor = .systemBlue
+        labelLogin.textColor = .white
         
         return labelLogin
     }()
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         labelForgotPaswword.text = "Forgot your password?"
         labelForgotPaswword.textAlignment = .center
         labelForgotPaswword.font = UIFont.boldSystemFont(ofSize: 13)
-        labelForgotPaswword.textColor = .systemBlue
+        labelForgotPaswword.textColor = .white
         
         return labelForgotPaswword
     }()
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         let textFieldLogin = UITextField()
         textFieldLogin.placeholder = "Login"
         textFieldLogin.textAlignment = .center
-        textFieldLogin.textColor = .black
+        textFieldLogin.textColor = .systemGray2
         textFieldLogin.font = UIFont.boldSystemFont(ofSize: 16)
         textFieldLogin.layer.cornerRadius = 26
         textFieldLogin.backgroundColor = .white
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         let textFieldPassword = UITextField()
         textFieldPassword.placeholder = "Password"
         textFieldPassword.textAlignment = .center
-        textFieldPassword.textColor = .black
+        textFieldPassword.textColor = .systemGray2
         textFieldPassword.font = UIFont.boldSystemFont(ofSize: 16)
         textFieldPassword.layer.cornerRadius = 26
         textFieldPassword.backgroundColor = .white
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         let buttonLogin = UIButton()
         buttonLogin.setTitle("Login", for: .normal)
         buttonLogin.layer.cornerRadius = 26
-        buttonLogin.backgroundColor = .systemBlue
+        buttonLogin.backgroundColor = .systemIndigo
         
         return buttonLogin
     }()
@@ -107,10 +107,17 @@ class ViewController: UIViewController {
         let buttonTwitter = UIButton()
         buttonTwitter.setTitle("Twitter", for: .normal)
         buttonTwitter.layer.cornerRadius = 15
-        buttonTwitter.backgroundColor = .systemBlue
+        buttonTwitter.backgroundColor = .systemIndigo
         buttonTwitter.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
         return buttonTwitter
+    }()
+    
+    private lazy var imageView: UIImageView = {
+        let image = UIImage(named: "background")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     //MARK: - Stacks
@@ -141,21 +148,25 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         setupHierarchy()
         setupLayout()
     }
     
     //MARK: - Setup
     
+    private func setupView() {
+        view.backgroundColor = .white
+    }
+    
     private func setupHierarchy() {
+        view.addSubview(imageView)
         view.addSubview(buttonLogin)
         view.addSubview(labelForgotPassword)
         view.addSubview(labelLogin)
         view.addSubview(textFieldLogin)
         view.addSubview(textFieldPassword)
         view.addSubview(labelSignUpStack)
-        view.addSubview(buttonFacebook)
-        view.addSubview(buttonTwitter)
         view.addSubview(buttonNetworkStack)
     }
     
