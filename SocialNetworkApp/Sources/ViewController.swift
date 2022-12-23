@@ -96,8 +96,9 @@ class ViewController: UIViewController {
     private lazy var buttonFacebook: UIButton = {
         let buttonFacebook = UIButton()
         buttonFacebook.setTitle("Facebook", for: .normal)
-        buttonFacebook.layer.cornerRadius = 26
+        buttonFacebook.layer.cornerRadius = 15
         buttonFacebook.backgroundColor = .systemBlue
+        buttonFacebook.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
         return buttonFacebook
     }()
@@ -105,10 +106,35 @@ class ViewController: UIViewController {
     private lazy var buttonTwitter: UIButton = {
         let buttonTwitter = UIButton()
         buttonTwitter.setTitle("Twitter", for: .normal)
-        buttonTwitter.layer.cornerRadius = 26
+        buttonTwitter.layer.cornerRadius = 15
         buttonTwitter.backgroundColor = .systemBlue
+        buttonTwitter.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
         return buttonTwitter
+    }()
+    
+    //MARK: - Stacks
+    
+    private lazy var buttonNetworkStack: UIStackView = {
+        let buttonStack = UIStackView()
+        buttonStack.axis = .horizontal
+        buttonStack.alignment = .center
+        buttonStack.distribution = .equalSpacing
+        buttonStack.spacing = 30
+        buttonStack.addArrangedSubview(buttonFacebook)
+        buttonStack.addArrangedSubview(buttonTwitter)
+        return buttonStack
+    }()
+    
+    private lazy var labelSignUpStack: UIStackView = {
+        let labelSignUpStack = UIStackView()
+        labelSignUpStack.axis = .horizontal
+        labelSignUpStack.alignment = .center
+        labelSignUpStack.distribution = .equalSpacing
+        labelSignUpStack.spacing = 5
+        labelSignUpStack.addArrangedSubview(labelHaveAccount)
+        labelSignUpStack.addArrangedSubview(labelSign)
+        return labelSignUpStack
     }()
     
     //MARK: - LifeCycle
@@ -127,10 +153,10 @@ class ViewController: UIViewController {
         view.addSubview(labelLogin)
         view.addSubview(textFieldLogin)
         view.addSubview(textFieldPassword)
-        view.addSubview(labelHaveAccount)
-        view.addSubview(labelSign)
+        view.addSubview(labelSignUpStack)
         view.addSubview(buttonFacebook)
         view.addSubview(buttonTwitter)
+        view.addSubview(buttonNetworkStack)
     }
     
     private func setupLayout() {
@@ -167,30 +193,23 @@ class ViewController: UIViewController {
             make.height.equalTo(50)
         }
         
-        labelHaveAccount.snp.makeConstraints { make in
+        labelSignUpStack.snp.makeConstraints { make in
             make.bottom.equalTo(view).offset(-50)
-            make.left.equalTo(view).offset(60)
-            make.right.equalTo(labelSign.snp.left).offset(-10)
+            make.left.equalTo(view).offset(100)
         }
         
-        labelSign.snp.makeConstraints { make in
-            make.bottom.equalTo(view).offset(-50)
-            make.right.equalTo(view).offset(-20)
-            make.left.equalTo(labelHaveAccount.snp.right).offset(10)
+        buttonNetworkStack.snp.makeConstraints { make in
+            make.bottom.equalTo(labelSignUpStack.snp.top).offset(-40)
+            make.left.equalTo(view).offset(50)
+            make.right.equalTo(view).offset(-50)
         }
         
         buttonFacebook.snp.makeConstraints { make in
-            make.bottom.equalTo(labelHaveAccount.snp.top).offset(-40)
-            make.left.equalTo(view).offset(30)
-            make.height.equalTo(40)
-            make.right.equalTo(buttonTwitter.snp.left).offset(-10)
+            make.width.equalTo(130)
         }
         
         buttonTwitter.snp.makeConstraints { make in
-            make.bottom.equalTo(labelSign.snp.top).offset(-40)
-            make.right.equalTo(view).offset(-30)
-            make.height.equalTo(40)
-            make.left.equalTo(buttonFacebook.snp.right).offset(10)
+            make.width.equalTo(130)
         }
     }
 }
