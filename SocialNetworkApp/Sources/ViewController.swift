@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         let labelLogin = UILabel()
         labelLogin.text = "Login"
         labelLogin.textAlignment = .center
-        labelLogin.font = UIFont.boldSystemFont(ofSize: 25)
+        labelLogin.font = UIFont(name: "Avenir-Black", size: 35)
         labelLogin.textColor = .white
         
         return labelLogin
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         let labelForgotPaswword = UILabel()
         labelForgotPaswword.text = "Forgot your password?"
         labelForgotPaswword.textAlignment = .center
-        labelForgotPaswword.font = UIFont.boldSystemFont(ofSize: 13)
+        labelForgotPaswword.font = UIFont(name: "Avenir-Black", size: 13)
         labelForgotPaswword.textColor = .white
         
         return labelForgotPaswword
@@ -35,6 +35,9 @@ class ViewController: UIViewController {
     private lazy var labelConnect: UILabel = {
         let labelConnect = UILabel()
         labelConnect.text = "or connect with"
+        labelConnect.font = UIFont(name: "Avenir-Black", size: 13)
+        labelConnect.textColor = .systemGray2
+        
         
         return labelConnect
     }()
@@ -43,8 +46,8 @@ class ViewController: UIViewController {
         let labelHaveAccount = UILabel()
         labelHaveAccount.text = "Don't have account?"
         labelHaveAccount.textAlignment = .center
-        labelHaveAccount.font = UIFont.boldSystemFont(ofSize: 13)
-        labelHaveAccount.textColor = .systemBlue
+        labelHaveAccount.font = UIFont(name: "Avenir-Black", size: 13)
+        labelHaveAccount.textColor = .systemGray2
         
         return labelHaveAccount
     }()
@@ -53,7 +56,7 @@ class ViewController: UIViewController {
        let labelSign = UILabel()
         labelSign.text = "Sign up"
         labelSign.textAlignment = .center
-        labelSign.font = UIFont.boldSystemFont(ofSize: 13)
+        labelSign.font = UIFont(name: "Avenir-Black", size: 13)
         labelSign.textColor = .systemBlue
         
         return labelSign
@@ -67,7 +70,11 @@ class ViewController: UIViewController {
         textFieldLogin.font = UIFont.boldSystemFont(ofSize: 16)
         textFieldLogin.layer.cornerRadius = 26
         textFieldLogin.backgroundColor = .white
+        textFieldLogin.setShadow(textFieldLogin)
         
+        if let loginImage = UIImage(named: "userLoginIcon"){
+            textFieldLogin.setLeftIcon(loginImage)
+        }
         
         return textFieldLogin
     }()
@@ -80,6 +87,11 @@ class ViewController: UIViewController {
         textFieldPassword.font = UIFont.boldSystemFont(ofSize: 16)
         textFieldPassword.layer.cornerRadius = 26
         textFieldPassword.backgroundColor = .white
+        textFieldPassword.setShadow(textFieldPassword)
+        
+        if let passwordImage = UIImage(named: "passwordIcon"){
+            textFieldPassword.setLeftIcon(passwordImage)
+        }
         
         return textFieldPassword
     }()
@@ -89,6 +101,7 @@ class ViewController: UIViewController {
         buttonLogin.setTitle("Login", for: .normal)
         buttonLogin.layer.cornerRadius = 26
         buttonLogin.backgroundColor = .systemIndigo
+        buttonLogin.setShadow(buttonLogin)
         
         return buttonLogin
     }()
@@ -99,6 +112,7 @@ class ViewController: UIViewController {
         buttonFacebook.layer.cornerRadius = 15
         buttonFacebook.backgroundColor = .systemBlue
         buttonFacebook.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        buttonFacebook.setShadow(buttonFacebook)
         
         return buttonFacebook
     }()
@@ -109,6 +123,7 @@ class ViewController: UIViewController {
         buttonTwitter.layer.cornerRadius = 15
         buttonTwitter.backgroundColor = .systemIndigo
         buttonTwitter.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        buttonTwitter.setShadow(buttonTwitter)
         
         return buttonTwitter
     }()
@@ -117,6 +132,7 @@ class ViewController: UIViewController {
         let image = UIImage(named: "background")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
+        
         return imageView
     }()
     
@@ -168,6 +184,7 @@ class ViewController: UIViewController {
         view.addSubview(textFieldPassword)
         view.addSubview(labelSignUpStack)
         view.addSubview(buttonNetworkStack)
+        view.addSubview(labelConnect)
     }
     
     private func setupLayout() {
@@ -222,6 +239,44 @@ class ViewController: UIViewController {
         buttonTwitter.snp.makeConstraints { make in
             make.width.equalTo(130)
         }
+        
+        labelConnect.snp.makeConstraints { make in
+            make.bottom.equalTo(buttonNetworkStack.snp.top).offset(-30)
+            make.centerX.equalTo(view)
+        }
     }
 }
 
+// MARK: - Extensions
+
+extension UITextField {
+    func setLeftIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame: CGRect(x: 30, y: 5, width: 20, height: 20))
+        iconView.image = image
+        iconView.tintColor = .systemGray2
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 10, height: 30))
+        iconContainerView.addSubview(iconView)
+        leftView = iconContainerView
+        leftViewMode = .always
+    }
+    
+    func setShadow(_ textField: UITextField) {
+        textField.layer.shadowColor = UIColor.black.cgColor
+        textField.layer.shadowOpacity = 0.4
+        textField.layer.shadowOffset = .zero
+        textField.layer.shadowRadius = 10
+        textField.layer.shouldRasterize = true
+        textField.layer.rasterizationScale = UIScreen.main.scale
+    }
+}
+
+extension UIButton {
+    func setShadow(_ button: UIButton) {
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.4
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 10
+        button.layer.shouldRasterize = true
+        button.layer.rasterizationScale = UIScreen.main.scale
+    }
+}
