@@ -13,119 +13,136 @@ class ViewController: UIViewController {
     //MARK: - UI Elements
     
     private lazy var labelLogin: UILabel = {
-        let labelLogin = UILabel()
-        labelLogin.text = "Login"
-        labelLogin.textAlignment = .center
-        labelLogin.font = UIFont(name: "Avenir-Black", size: 35)
-        labelLogin.textColor = .white
+        let label = UILabel()
+        label.text = "Login"
+        label.textAlignment = .center
+        label.font = UIFont(name: "Avenir-Black", size: 35)
+        label.textColor = .white
         
-        return labelLogin
+        return label
     }()
     
     private lazy var labelForgotPassword: UILabel = {
-        let labelForgotPaswword = UILabel()
-        labelForgotPaswword.text = "Forgot your password?"
-        labelForgotPaswword.textAlignment = .center
-        labelForgotPaswword.font = UIFont(name: "Avenir-Black", size: 13)
-        labelForgotPaswword.textColor = .white
+        let label = UILabel()
+        label.text = "Forgot your password?"
+        label.textAlignment = .center
+        label.font = UIFont(name: "Avenir-Black", size: 13)
+        label.textColor = .white
         
-        return labelForgotPaswword
+        return label
     }()
     
     private lazy var labelConnect: UILabel = {
-        let labelConnect = UILabel()
-        labelConnect.text = "or connect with"
-        labelConnect.font = UIFont(name: "Avenir-Black", size: 13)
-        labelConnect.textColor = .systemGray2
+        let label = UILabel()
+        label.text = "or connect with"
+        label.font = UIFont(name: "Avenir-Black", size: 13)
+        label.textColor = .systemGray2
         
         
-        return labelConnect
+        return label
     }()
     
     private lazy var labelHaveAccount: UILabel = {
-        let labelHaveAccount = UILabel()
-        labelHaveAccount.text = "Don't have account?"
-        labelHaveAccount.textAlignment = .center
-        labelHaveAccount.font = UIFont(name: "Avenir-Black", size: 13)
-        labelHaveAccount.textColor = .systemGray2
+        let label = UILabel()
+        label.text = "Don't have account?"
+        label.textAlignment = .center
+        label.font = UIFont(name: "Avenir-Black", size: 13)
+        label.textColor = .systemGray2
         
-        return labelHaveAccount
+        return label
     }()
     
     private lazy var labelSign: UILabel = {
-       let labelSign = UILabel()
-        labelSign.text = "Sign up"
-        labelSign.textAlignment = .center
-        labelSign.font = UIFont(name: "Avenir-Black", size: 13)
-        labelSign.textColor = .systemBlue
+       let label = UILabel()
+        label.text = "Sign up"
+        label.textAlignment = .center
+        label.font = UIFont(name: "Avenir-Black", size: 13)
+        label.textColor = .systemBlue
         
-        return labelSign
+        return label
     }()
     
     private lazy var textFieldLogin: UITextField = {
-        let textFieldLogin = UITextField()
-        textFieldLogin.placeholder = "Login"
-        textFieldLogin.textAlignment = .center
-        textFieldLogin.textColor = .systemGray2
-        textFieldLogin.font = UIFont.boldSystemFont(ofSize: 16)
-        textFieldLogin.layer.cornerRadius = 26
-        textFieldLogin.backgroundColor = .white
-        textFieldLogin.setShadow(textFieldLogin)
+        let textField = UITextField()
+        textField.placeholder = "Login"
+        textField.textAlignment = .center
+        textField.textColor = .systemGray2
+        textField.font = UIFont.boldSystemFont(ofSize: 16)
+        textField.layer.cornerRadius = 26
+        textField.backgroundColor = .white
+        textField.setShadow(textField)
         
         if let loginImage = UIImage(named: "userLoginIcon"){
-            textFieldLogin.setLeftIcon(loginImage)
+            textField.setLeftIcon(loginImage)
         }
         
-        return textFieldLogin
+        return textField
     }()
     
     private lazy var textFieldPassword: UITextField = {
-        let textFieldPassword = UITextField()
-        textFieldPassword.placeholder = "Password"
-        textFieldPassword.textAlignment = .center
-        textFieldPassword.textColor = .systemGray2
-        textFieldPassword.font = UIFont.boldSystemFont(ofSize: 16)
-        textFieldPassword.layer.cornerRadius = 26
-        textFieldPassword.backgroundColor = .white
-        textFieldPassword.setShadow(textFieldPassword)
+        let textField = UITextField()
+        textField.placeholder = "Password"
+        textField.textAlignment = .center
+        textField.textColor = .systemGray2
+        textField.font = UIFont.boldSystemFont(ofSize: 16)
+        textField.layer.cornerRadius = 26
+        textField.backgroundColor = .white
+        textField.setShadow(textField)
         
         if let passwordImage = UIImage(named: "passwordIcon"){
-            textFieldPassword.setLeftIcon(passwordImage)
+            textField.setLeftIcon(passwordImage)
         }
         
-        return textFieldPassword
+        return textField
     }()
     
     private lazy var buttonLogin: UIButton = {
-        let buttonLogin = UIButton()
-        buttonLogin.setTitle("Login", for: .normal)
-        buttonLogin.layer.cornerRadius = 26
-        buttonLogin.backgroundColor = .systemIndigo
-        buttonLogin.setShadow(buttonLogin)
+        let button = UIButton(type: .system)
+        button.tintColor = .white
+        button.setTitle("Login", for: .normal)
+        button.layer.cornerRadius = 26
+        button.backgroundColor = .systemIndigo
+        button.setShadow(button)
         
-        return buttonLogin
+        return button
     }()
     
     private lazy var buttonFacebook: UIButton = {
-        let buttonFacebook = UIButton()
-        buttonFacebook.setTitle("Facebook", for: .normal)
-        buttonFacebook.layer.cornerRadius = 15
-        buttonFacebook.backgroundColor = .systemBlue
-        buttonFacebook.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        buttonFacebook.setShadow(buttonFacebook)
+        let button = UIButton(type: .system)
         
-        return buttonFacebook
+        var configuration = UIButton.Configuration.filled()
+        configuration.image = UIImage(named: "facebookIcon")
+        configuration.imagePadding = 3
+        configuration.imagePlacement = .leading
+        configuration.cornerStyle = .capsule
+        configuration.baseBackgroundColor = .systemBlue
+        configuration.titleAlignment = .center
+        
+        button.configuration = configuration
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Facebook", for: .normal)
+        button.setShadow(button)
+        
+        return button
     }()
     
     private lazy var buttonTwitter: UIButton = {
-        let buttonTwitter = UIButton()
-        buttonTwitter.setTitle("Twitter", for: .normal)
-        buttonTwitter.layer.cornerRadius = 15
-        buttonTwitter.backgroundColor = .systemIndigo
-        buttonTwitter.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        buttonTwitter.setShadow(buttonTwitter)
+        let button = UIButton(type: .system)
         
-        return buttonTwitter
+        var configuration = UIButton.Configuration.filled()
+        configuration.image = UIImage(named: "twitterIcon")
+        configuration.imagePadding = 3
+        configuration.imagePlacement = .leading
+        configuration.cornerStyle = .capsule
+        configuration.baseBackgroundColor = .systemBlue
+        configuration.titleAlignment = .center
+        
+        button.configuration = configuration
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Twitter", for: .normal)
+        button.setShadow(button)
+        
+        return button
     }()
     
     private lazy var imageView: UIImageView = {
@@ -139,25 +156,25 @@ class ViewController: UIViewController {
     //MARK: - Stacks
     
     private lazy var buttonNetworkStack: UIStackView = {
-        let buttonStack = UIStackView()
-        buttonStack.axis = .horizontal
-        buttonStack.alignment = .center
-        buttonStack.distribution = .equalSpacing
-        buttonStack.spacing = 30
-        buttonStack.addArrangedSubview(buttonFacebook)
-        buttonStack.addArrangedSubview(buttonTwitter)
-        return buttonStack
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.distribution = .equalSpacing
+        stack.spacing = 30
+        stack.addArrangedSubview(buttonFacebook)
+        stack.addArrangedSubview(buttonTwitter)
+        return stack
     }()
     
     private lazy var labelSignUpStack: UIStackView = {
-        let labelSignUpStack = UIStackView()
-        labelSignUpStack.axis = .horizontal
-        labelSignUpStack.alignment = .center
-        labelSignUpStack.distribution = .equalSpacing
-        labelSignUpStack.spacing = 5
-        labelSignUpStack.addArrangedSubview(labelHaveAccount)
-        labelSignUpStack.addArrangedSubview(labelSign)
-        return labelSignUpStack
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.distribution = .equalSpacing
+        stack.spacing = 5
+        stack.addArrangedSubview(labelHaveAccount)
+        stack.addArrangedSubview(labelSign)
+        return stack
     }()
     
     //MARK: - LifeCycle
@@ -167,6 +184,7 @@ class ViewController: UIViewController {
         setupView()
         setupHierarchy()
         setupLayout()
+        setupHideKeyboard()
     }
     
     //MARK: - Setup
@@ -232,12 +250,14 @@ class ViewController: UIViewController {
             make.right.equalTo(view).offset(-50)
         }
         
+        
+        
         buttonFacebook.snp.makeConstraints { make in
-            make.width.equalTo(130)
+            make.width.equalTo(135)
         }
         
         buttonTwitter.snp.makeConstraints { make in
-            make.width.equalTo(130)
+            make.width.equalTo(135)
         }
         
         labelConnect.snp.makeConstraints { make in
@@ -245,38 +265,16 @@ class ViewController: UIViewController {
             make.centerX.equalTo(view)
         }
     }
-}
-
-// MARK: - Extensions
-
-extension UITextField {
-    func setLeftIcon(_ image: UIImage) {
-        let iconView = UIImageView(frame: CGRect(x: 30, y: 5, width: 20, height: 20))
-        iconView.image = image
-        iconView.tintColor = .systemGray2
-        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 10, height: 30))
-        iconContainerView.addSubview(iconView)
-        leftView = iconContainerView
-        leftViewMode = .always
+    
+    private func setupHideKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
-    func setShadow(_ textField: UITextField) {
-        textField.layer.shadowColor = UIColor.black.cgColor
-        textField.layer.shadowOpacity = 0.4
-        textField.layer.shadowOffset = .zero
-        textField.layer.shadowRadius = 10
-        textField.layer.shouldRasterize = true
-        textField.layer.rasterizationScale = UIScreen.main.scale
-    }
-}
-
-extension UIButton {
-    func setShadow(_ button: UIButton) {
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.4
-        button.layer.shadowOffset = .zero
-        button.layer.shadowRadius = 10
-        button.layer.shouldRasterize = true
-        button.layer.rasterizationScale = UIScreen.main.scale
+    //MARK: - Actions
+    
+    @objc private func hideKeyboard() {
+        view.endEditing(true)
     }
 }
