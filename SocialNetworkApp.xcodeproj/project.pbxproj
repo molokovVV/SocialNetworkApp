@@ -12,6 +12,8 @@
 		045CED672954E713007BBB8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CED662954E713007BBB8F /* ViewController.swift */; };
 		045CED6C2954E715007BBB8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045CED6B2954E715007BBB8F /* Assets.xcassets */; };
 		045CED6F2954E715007BBB8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045CED6D2954E715007BBB8F /* LaunchScreen.storyboard */; };
+		049E59112958654200FFC2C4 /* TextField + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E59102958654200FFC2C4 /* TextField + Ext.swift */; };
+		049E59132958679000FFC2C4 /* Button + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E59122958679000FFC2C4 /* Button + Ext.swift */; };
 		04F2C8812954EA2E006EEBB2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04F2C8802954EA2E006EEBB2 /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 		045CED6B2954E715007BBB8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		045CED6E2954E715007BBB8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		045CED702954E715007BBB8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		049E59102958654200FFC2C4 /* TextField + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField + Ext.swift"; sourceTree = "<group>"; };
+		049E59122958679000FFC2C4 /* Button + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button + Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,15 @@
 			path = SocialNetworkApp;
 			sourceTree = "<group>";
 		};
+		049E590F2958650A00FFC2C4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				049E59102958654200FFC2C4 /* TextField + Ext.swift */,
+				049E59122958679000FFC2C4 /* Button + Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		04F2C87C2954E8BA006EEBB2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +88,7 @@
 		04F2C87D2954E8C6006EEBB2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				049E590F2958650A00FFC2C4 /* Extension */,
 				045CED662954E713007BBB8F /* ViewController.swift */,
 				04F2C87E2954E8EE006EEBB2 /* App */,
 			);
@@ -167,7 +181,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				045CED672954E713007BBB8F /* ViewController.swift in Sources */,
+				049E59112958654200FFC2C4 /* TextField + Ext.swift in Sources */,
 				045CED632954E713007BBB8F /* AppDelegate.swift in Sources */,
+				049E59132958679000FFC2C4 /* Button + Ext.swift in Sources */,
 				045CED652954E713007BBB8F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
